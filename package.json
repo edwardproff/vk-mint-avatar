@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "homepage": ".",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt generate",
+    "tunnel": "vk-tunnel --ws-protocol=wss --port=3000",
+    "predeploy": "nuxt generate",
+    "deploy": "vk-miniapps-deploy"
+  },
+  "devDependencies": {
+    "nuxt": "^3.2.0",
+    "sass-loader": "10"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.6",
+    "@vkontakte/vk-bridge": "^2.7.2",
+    "@vkontakte/vk-miniapps-deploy": "^0.0.26",
+    "@vkontakte/vk-tunnel": "^0.1.3",
+    "@vueuse/core": "^9.12.0",
+    "@vueuse/nuxt": "^9.12.0",
+    "moment": "^2.29.4",
+    "pinia": "^2.0.30",
+    "sass": "^1.58.1",
+    "web3": "^1.8.2"
+  }
+}
