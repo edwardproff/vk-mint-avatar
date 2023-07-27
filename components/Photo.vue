@@ -100,7 +100,9 @@ function getImageBase64(url) {
       .then(blob => new Promise(callback => {
         let reader = new FileReader()
         reader.onload = function () {
-          callback(this.result.replace('data:image/jpeg;base64,', ''))
+          let result = this.result
+          result = result.substring(result.indexOf("base64,") + 7, result.length)
+          callback(result)
         }
         reader.readAsDataURL(blob);
       }))
