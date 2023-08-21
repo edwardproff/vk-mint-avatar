@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            contractAddress: '0xc3a9766e07754cC1894E5c0A2459d23A676dDD0D',
+            contractAddress: '0xCBee492c6A1F37abdEaff712513bC20639548a35',
             vkAppId: 51714131
         }
     },

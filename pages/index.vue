@@ -16,14 +16,14 @@ async function connect() {
   try {
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
-      params: [{chainId: "0x1b198"}],
+      params: [{chainId: "0x89"}],
     });
   } catch (switchError) {
     if (switchError.code === 4902) {
       try {
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
-          params: ['0x1b198']
+          params: ['0x89']
         });
       } catch (addError) {
         console.log("addChain Error: ", addError);
@@ -42,7 +42,7 @@ async function connect() {
 
   walletsStore.addWallet({
     title: 'MetaMask',
-    chain: 'Siberium Testnet',
+    chain: 'Polygon Mainnet',
     publicKey: accounts[0]
   })
 }
