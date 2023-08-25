@@ -3,7 +3,7 @@ import {onMounted} from "vue"
 import Web3 from "web3"
 import abi from "~/abi.json"
 
-const {$vk, $vkAuthToken} = useNuxtApp()
+const {$vk, $vkAuthToken, $vkUser} = useNuxtApp()
 const runtimeConfig = useRuntimeConfig()
 
 let loading = ref(false)
@@ -27,13 +27,15 @@ async function load() {
 
     // получаем список NFT
     try {
-      nfts.value = await contract.methods.getAllAvatars()
+      nfts.value = await contract.methods.getAvatarByVkOwnerId($vkUser.id)
           .call({
             from: accounts[0]
           })
     } catch (e) {
       console.log(e)
     }
+
+    console.log(nfts.value[2])
 
     // burnedNfts.value = await contract.methods.getAvatarByVkOwnerId('0x0000000000000000000000000000000000000000')
     //     .call({
@@ -70,7 +72,9 @@ async function load() {
 
         photo.image = photo.sizes[0].url
 
-        photo.nft = nfts.value.find(nft => nft[2] == photo.id)
+        photo.nft = photo.id == nfts.value[2] ? nfts.value : null
+        // photo.nft = nfts.value.find(nft => nft[2] == photo.id)
+        console.log(photo)
         return photo
       })
 

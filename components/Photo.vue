@@ -56,7 +56,7 @@ async function mint(photo) {
 
   const photoBase64Image = await getImageBase64(photo.image)
 
-  // console.log('image', photoBase64Image)
+  console.log('image', photoBase64Image)
 
   const metadataData = {
     vkOwnerId: photo.owner_id,
@@ -153,7 +153,7 @@ function getImageBase64(url) {
             </svg>
           </a>
           <a v-if="photo.nft"
-             :href="'https://explorer.test.siberium.net/token/' + runtimeConfig.public.contractAddress + '/instance/' + photo.nft[0]"
+             :href="'https://polygonscan.com/token/' + runtimeConfig.public.contractAddress + '?a=' + photo.nft[0]"
              target="_blank"
              class="photo-card__button photo-card__button--primary">
             <span>Explorer</span>
@@ -184,7 +184,7 @@ function getImageBase64(url) {
             Адрес контракта
           </div>
           <a class="photo-card__attributes-value photo-card__attributes-value--copyable"
-             :href="'https://explorer.test.siberium.net/address/' + runtimeConfig.public.contractAddress"
+             :href="'https://polygonscan.com/token/' + runtimeConfig.public.contractAddress"
              target="_blank">
             {{ runtimeConfig.public.contractAddress }}
           </a>
