@@ -84,7 +84,7 @@ async function connect() {
         <img src="/svg/MetaMask.svg"/>
       </span>
       <div class="wallet-card__body">
-        MetaMask (Only Siberium Testnet)
+        MetaMask (Only Polygon Mainnet)
       </div>
     </button>
   </div>

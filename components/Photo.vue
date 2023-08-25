@@ -202,7 +202,7 @@ function getImageBase64(url) {
             Блокчейн
           </div>
           <div class="photo-card__attributes-value">
-            Siberium Testnet
+            Polygon Mainnet
           </div>
         </div>
       </div>
