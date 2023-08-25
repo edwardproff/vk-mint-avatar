@@ -26,10 +26,14 @@ async function load() {
     let accounts = await web3.eth.getAccounts()
 
     // получаем список NFT
-    nfts.value = await contract.methods.getAllAvatars()
-        .call({
-          from: accounts[0]
-        })
+    try {
+      nfts.value = await contract.methods.getAllAvatars()
+          .call({
+            from: accounts[0]
+          })
+    } catch (e) {
+      console.log(e)
+    }
 
     // burnedNfts.value = await contract.methods.getAvatarByVkOwnerId('0x0000000000000000000000000000000000000000')
     //     .call({
@@ -58,8 +62,8 @@ async function load() {
         photo.cover = photo.sizes[0].url
 
         let sizeX
-        if(sizeX = photo.sizes.find(img => img.type === 'z')) {
-          if(sizeX) {
+        if (sizeX = photo.sizes.find(img => img.type === 'z')) {
+          if (sizeX) {
             photo.cover = sizeX.url
           }
         }

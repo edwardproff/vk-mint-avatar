@@ -87,18 +87,6 @@ async function connect() {
         MetaMask (Only Siberium Testnet)
       </div>
     </button>
-    <div>
-      <b>Добавить Siberium Testnet в MetaMask:</b>
-      <br>
-      1.Добавить сеть - Add network<br>
-      2.Добавить сеть вручную - Add network manually<br>
-      Параметры:<br>
-      Network Name: Siberium Test Network<br>
-      New RPC URL: https://rpc.test.siberium.net<br>
-      Chain ID: 111000<br>
-      Currency Symbol: SIBR<br>
-      Block explorer URL: https://explorer.test.siberium.net
-    </div>
   </div>
 </template>
 

@@ -40,46 +40,70 @@ async function mint(photo) {
         console.log(err)
       })
 
+  console.log('getnonce', nonce)
 
   const blockNumber = await web3.eth.getBlockNumber();
+
+  console.log('getBlockNumber', blockNumber)
+
   const block = await web3.eth.getBlock(blockNumber);
+
+  console.log('getBlock', block)
 
   const timestamp = block.timestamp;
   const deadline = timestamp + 20000;
+  console.log('deadline', deadline)
 
   const photoBase64Image = await getImageBase64(photo.image)
+
+  // console.log('image', photoBase64Image)
+
+  const metadataData = {
+    vkOwnerId: photo.owner_id,
+    vkAvatarId: photo.id,
+    vkAvatarData: photoBase64Image,
+    chainId: 137
+  }
+
+  console.log('metadataRequest', metadataData)
 
   const metadataResponse = await fetch('https://test.nomis.cc/api/v1/vk-nft/avatar-metadata', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      vkOwnerId: photo.owner_id,
-      vkAvatarId: photo.id,
-      vkAvatarData: photoBase64Image
-    })
+    body: JSON.stringify(metadataData)
   })
 
   let metadata = await metadataResponse.json()
+
+  console.log('metadataResponse', metadata.data)
+
+  const signatureData = {
+    to: accounts[0],
+    nonce,
+    deadline,
+    metadataUrl: metadata.data,
+    vkOwnerId: photo.owner_id,
+    vkAvatarId: photo.id,
+    chainId: 137
+  }
+
+  console.log('signatureRequest', signatureData)
 
   const signatureResponse = await fetch('https://test.nomis.cc/api/v1/vk-nft/avatar-signature', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      to: accounts[0],
-      nonce,
-      deadline,
-      metadataUrl: metadata.data,
-      vkOwnerId: photo.owner_id,
-      vkAvatarId: photo.id,
-      chainId: 111000
-    })
+    body: JSON.stringify(signatureData)
   })
 
   let signature = await signatureResponse.json()
+
+  console.log('signatureResponse', signature.data)
+
+  console.log('mint', signature.data.signature, photo.id, photo.owner_id, deadline, metadata.data)
 
   await contract.methods.mintAvatar(signature.data.signature, photo.id, photo.owner_id, deadline, metadata.data)
       .send({
