@@ -149,44 +149,12 @@
     "inputs": [
       {
         "indexed": true,
-        "internalType": "address",
-        "name": "wallet",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "updateFee",
-        "type": "uint256"
-      }
-    ],
-    "name": "ChangedIndividualUpdateFee",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
         "internalType": "uint256",
         "name": "mintFee",
         "type": "uint256"
       }
     ],
     "name": "ChangedMintFee",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "updateFee",
-        "type": "uint256"
-      }
-    ],
-    "name": "ChangedUpdateFee",
     "type": "event"
   },
   {
@@ -350,25 +318,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "avatarToOwner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "owner",
         "type": "address"
@@ -447,8 +396,125 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "getAllAvatars",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getApproved",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getAvatarByTokenId",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vkOwnerId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vkAvatarId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "updated",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct VKAvatar.VKAvatarData",
+        "name": "avatar",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "avatarId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getAvatarByVkAvatarId",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vkOwnerId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vkAvatarId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "updated",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct VKAvatar.VKAvatarData",
+        "name": "avatar",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "getAvatars",
     "outputs": [
       {
         "components": [
@@ -479,159 +545,8 @@
           }
         ],
         "internalType": "struct VKAvatar.VKAvatarData[]",
-        "name": "",
+        "name": "avatars",
         "type": "tuple[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "getApproved",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "addr",
-        "type": "address"
-      }
-    ],
-    "name": "getAvatar",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkOwnerId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkAvatarId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "updated",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "metadataUrl",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAvatarByTokenId",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkOwnerId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkAvatarId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "updated",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "metadataUrl",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "avatarId",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAvatarByVkAvatarId",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkOwnerId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkAvatarId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "updated",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "metadataUrl",
-        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -645,37 +560,39 @@
         "type": "uint256"
       }
     ],
-    "name": "getAvatarByVkOwnerId",
+    "name": "getAvatarsByVkOwnerId",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkOwnerId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vkAvatarId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "updated",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "metadataUrl",
-        "type": "string"
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vkOwnerId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vkAvatarId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "updated",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct VKAvatar.VKAvatarData[]",
+        "name": "avatars",
+        "type": "tuple[]"
       }
     ],
     "stateMutability": "view",
@@ -727,25 +644,6 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "wallet",
-        "type": "address"
-      }
-    ],
-    "name": "getIndividualUpdateFee",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "getMintFee",
     "outputs": [
@@ -778,13 +676,19 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "getUpdateFee",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "getTokenIds",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint256[]",
         "name": "",
-        "type": "uint256"
+        "type": "uint256[]"
       }
     ],
     "stateMutability": "view",
@@ -1048,43 +952,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "wallet",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "fee",
-        "type": "uint256"
-      }
-    ],
-    "name": "setIndividualUpdateFee",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "uint256",
         "name": "mintFee",
         "type": "uint256"
       }
     ],
     "name": "setMintFee",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "updateFee",
-        "type": "uint256"
-      }
-    ],
-    "name": "setUpdateFee",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1181,44 +1054,6 @@
     "name": "unpause",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "vkAvatarIdToWallet",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "vkOwnerToWallet",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {

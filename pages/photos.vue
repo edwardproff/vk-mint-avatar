@@ -27,7 +27,7 @@ async function load() {
 
     // получаем список NFT
     try {
-      nfts.value = await contract.methods.getAvatarByVkOwnerId($vkUser.id)
+      nfts.value = await contract.methods.getAvatars(accounts[0])
           .call({
             from: accounts[0]
           })
@@ -35,7 +35,7 @@ async function load() {
       console.log(e)
     }
 
-    console.log(nfts.value[2])
+    console.log(nfts.value)
 
     // burnedNfts.value = await contract.methods.getAvatarByVkOwnerId('0x0000000000000000000000000000000000000000')
     //     .call({
@@ -72,8 +72,8 @@ async function load() {
 
         photo.image = photo.sizes[0].url
 
-        photo.nft = photo.id == nfts.value[2] ? nfts.value : null
-        // photo.nft = nfts.value.find(nft => nft[2] == photo.id)
+        // photo.nft = photo.id == nfts.value[2] ? nfts.value : null
+        photo.nfts = nfts.value.find(nft => nft[2] == photo.id)
         console.log(photo)
         return photo
       })
